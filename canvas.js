@@ -1,18 +1,18 @@
 
-var canvas = document.querySelector('canvas')
+let canvas = document.querySelector('canvas')
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
-var c = canvas.getContext('2d')
+let c = canvas.getContext('2d')
 console.log(c);
-var sx = 500
-var sy = 500
-var x = 100
-var y = 100
-var dx = 15
-var dy = 15
-var sdx = 15
-var sdy = 15
-var rad = 50
+let sx = 500
+let sy = 500
+let x = 100
+let y = 100
+let dx = 15
+let dy = 15
+let sdx = 15
+let sdy = 15
+let rad = 50
 
 function animate() {
     requestAnimationFrame(animate);
@@ -21,6 +21,7 @@ function animate() {
     c.beginPath()
     c.arc(x,y,rad,0,Math.PI * 2, false)
     c.stroke()
+// use this for an update function 
     if (x + rad > innerWidth || x - rad < 0  ) {
         dx = -dx
        
@@ -40,4 +41,19 @@ function animate() {
     sx += sdx
     sy += sdy
 }
+
 animate()
+
+// multiples circles
+// function Circle(x, y, dx, dy, rad){
+//     this.x = x;
+//     this.y = y;
+//     this.dx = dx;
+//     this.dy = dy;
+//     this.rad = rad;
+//     this.draw = function (){
+//         c.beginPath()
+//         c.arc(this.x,this.y,this.rad,0,Math.PI * 2, false)
+//         c.stroke()
+//     }
+// }
