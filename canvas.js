@@ -51,7 +51,7 @@ function Circle(x, y, dx, dy, rad){
     this.dx = dx;
     this.dy = dy;
     this.rad = rad;
-    this.draw = function (){
+    this.draw = function (c){
         c.beginPath()
         c.arc(this.x,this.y,this.rad,0,Math.PI * 2, false)
         c.stroke()
@@ -60,13 +60,14 @@ function Circle(x, y, dx, dy, rad){
 const circles = []
 
 for (let i = 0; i < 100; i++){
-    const y = Math.floor(Math.random() * 100) + 1;
-    const x = Math.floor(Math.random() * 100) + 1;
+    const x = Math.floor(Math.random() * window.innerWidth);
+    const y = Math.floor(Math.random() * window.innerHeight) ;
     const dx = Math.floor(Math.random() * 100) + 1;
     const dy = Math.floor(Math.random() * 100) + 1;
-    const rad = Math.floor(Math.random() * 100) + 1;
+    const rad = Math.floor(Math.random() * 50) + 1;
     const circle = new Circle(x, y, dx, dy, rad)
     circles.push(circle)
+    circle.draw(c)
     
 
 }
