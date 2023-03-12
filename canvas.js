@@ -3,48 +3,7 @@ let canvas = document.querySelector('canvas')
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 let c = canvas.getContext('2d')
-// console.log(c);
-// let sx = 500
-// let sy = 500
-// let x = 100
-// let y = 100
-// let dx = 15
-// let dy = 15
-// let sdx = 15
-// let sdy = 15
-// let rad = 50
 
-// function animate() {
-//     requestAnimationFrame(animate);
-//     c.clearRect(0, 0, innerWidth, innerHeight)
-//     c.fillRect(sx, sy, 100, 100)
-//     c.beginPath()
-//     c.arc(x,y,rad,0,Math.PI * 2, false)
-//     c.stroke()
-// // use this for an update function 
-//     if (x + rad > innerWidth || x - rad < 0  ) {
-//         dx = -dx
-       
-//     }
-//     if( y + rad > innerHeight || y - rad < 0) {
-//         dy = -dy
-//     }
-//     if (sx + rad > innerWidth || sx  < 0  ) {
-//         sdx = -sdx
-       
-//     }
-//     if( sy + rad > innerHeight || sy  < 0) {
-//         sdy = -sdy
-//     }
-//     x += dx
-//     y += dy
-//     sx += sdx
-//     sy += sdy
-// }
-
-// animate()
-
-// multiples circles
 function Circle(x, y, dx, dy, rad){
     this.x = x;
     this.y = y;
@@ -56,20 +15,50 @@ function Circle(x, y, dx, dy, rad){
         c.arc(this.x,this.y,this.rad,0,Math.PI * 2, false)
         c.stroke()
     }
+    this.movement = function() {
+        
+        if (this.x + this.rad > innerWidth || this.x - this.rad < 0  ) {
+            dx = -dx
+       
+        }
+        if( this.y + this.rad > innerHeight || this.y - this.rad < 0) {
+            dy = -dy
+        }
+       
+        this.x += dx
+        this.y += dy
+        this.draw(c)
+    }
 }
 const circles = []
 
 for (let i = 0; i < 100; i++){
     const x = Math.floor(Math.random() * window.innerWidth);
     const y = Math.floor(Math.random() * window.innerHeight) ;
-    const dx = Math.floor(Math.random() * 100) + 1;
-    const dy = Math.floor(Math.random() * 100) + 1;
+    const dx = Math.floor(Math.random() * 30) + 1;
+    const dy = Math.floor(Math.random() * 15) + 1;
     const rad = Math.floor(Math.random() * 50) + 1;
-    const circle = new Circle(x, y, dx, dy, rad)
-    circles.push(circle)
-    circle.draw(c)
-    
+  
+    circles.push(new Circle(x, y, dx, dy, rad))
+  
+
 
 }
+
+
+
+function animate() {
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, innerWidth, innerHeight)
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].movement();
+        
+    }
+
+}
+
+animate()
+
+// multiples circles
 
 console.log(circles);
