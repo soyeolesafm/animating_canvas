@@ -33,10 +33,10 @@ function Circle(x, y, dx, dy, rad){
 const circles = []
 
 for (let i = 0; i < 100; i++){
-    const x = Math.floor(Math.random() * window.innerWidth);
-    const y = Math.floor(Math.random() * window.innerHeight) ;
-    const dx = Math.floor(Math.random() * 30) + 1;
-    const dy = Math.floor(Math.random() * 15) + 1;
+    const x = Math.floor(Math.random() * window.innerWidth) - 50;
+    const y = Math.floor(Math.random() * window.innerHeight) -50;
+    const dx = Math.floor(Math.random() * 10) + 1;
+    const dy = Math.floor(Math.random() * 10) + 1;
     const rad = Math.floor(Math.random() * 50) + 1;
   
     circles.push(new Circle(x, y, dx, dy, rad))
