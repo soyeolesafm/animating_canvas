@@ -3,11 +3,7 @@ let canvas = document.querySelector('canvas')
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 let c = canvas.getContext('2d')
-// in order to animate the canvas we need to make a funnction calling the 
-// requestAnimatikonFrame on the canvas wich basically is constanttly updating the canvas
-// ? para animar el canvas necesitas hace una funcion que llame al context..
-// ? ... de canvas "requestAnimationFrame" que basicamente 
-// ?...constantemente actualiza el canvas
+
 // *next function is creating a class with the parameters to create objects 
 // * that will take the parameters to create a circle so we can storage 
 // * multiples circles in an array so we can draw them an aniumate them
@@ -59,7 +55,11 @@ for (let i = 0; i < 200; i++){
 
 }
 
-
+// in order to animate the canvas we need to make a funnction calling the 
+// requestAnimatikonFrame on the canvas wich basically is constanttly updating the canvas
+// ? para animar el canvas necesitas hace una funcion que llame al context..
+// ? ... de canvas "requestAnimationFrame" que basicamente 
+// ?...constantemente actualiza el canvas
 
 function animate() {
     requestAnimationFrame(animate);
